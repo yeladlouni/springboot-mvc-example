@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Inventory</title>
+</head>
+
+<body>
+  <div class="productlist" th:unless="${#lists.isEmpty(products)}">
+      <h2>Product Inventory</h2>
+      <table>
+          <thead>
+          <tr>
+              <th>Id</th>
+              <th>Label</th>
+              <th>Length</th>
+              <th>Width</th>
+              <th>Heigth</th>
+              <th>Weight</th>
+              <th>Price</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="p: ${products}">
+              <td th:text="${p.id}"></td>
+              <td th:text="${p.label}"></td>
+              <td th:text="${p.width}"></td>
+              <td th:text="${p.length}"></td>
+              <td th:text="${p.height}"></td>
+              <td th:text="${p.weight}"></td>
+              <td th:text="${p.price}"></td>
+          </tr>
+          </tbody>
+      </table>
+  </div>
+
+</body>
+
+<script type="javascript">
+    window.onload = setupRefresh;
+
+    function setupRefresh() {
+        setTimeout("refreshPage();", 5000);
+    }
+
+    function refreshPage() {
+        window.location = location.href
+    }
+</script>
+</html>
+
